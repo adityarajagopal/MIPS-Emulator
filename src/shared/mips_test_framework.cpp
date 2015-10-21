@@ -52,6 +52,7 @@ static const instr_info_t sg_instructionsArray[]=
     {"DIVU","Divide unsigned"},
     {"J","Jump"},
     {"JAL","Jump and link"},
+    {"JALR","Jump and link register"},
     {"JR","Jump register"},
     {"LB","Load byte"},
     {"LBU","Load byte unsigned"},
@@ -221,7 +222,7 @@ extern "C" void mips_test_end_suite()
             totalFullyWorking++;
         }
             
-        fprintf(stderr, "|%12s |   %4u |   %4u |  %5.1lf%% |\n", name.c_str(), total, passed, 100.0*passed/(double)total);
+        fprintf(stderr, "|%12s |   %4u |   %4u |  %5.1f%% |\n", name.c_str(), total, passed, 100.0*passed/(double)total);
         
         if(sg_knownInstructions.find(name)==sg_knownInstructions.end()){
             fprintf(stderr, "+ Warning: previous instruction not known +\n");
@@ -233,7 +234,7 @@ extern "C" void mips_test_end_suite()
     fprintf(stderr, "+-------------+--------+--------+---------+\n"); 
     fprintf(stderr, "\n");
     fprintf(stderr, "Total instructions tested: %3u\n", totalTested);
-    fprintf(stderr, "Fully working :            %3u (%5.1lf%%)\n", totalFullyWorking, 100.0*totalFullyWorking/(double)totalTested);
-    fprintf(stderr, "Partially working :        %3u (%5.1lf%%)\n", totalPartiallyWorking, 100.0*totalPartiallyWorking/(double)totalTested);
-    fprintf(stderr, "Not working at all :       %3u (%5.1lf%%)\n", totalNotWorking, 100.0*totalNotWorking/(double)totalTested);
+    fprintf(stderr, "Fully working :            %3u (%5.1f%%)\n", totalFullyWorking, 100.0*totalFullyWorking/(double)totalTested);
+    fprintf(stderr, "Partially working :        %3u (%5.1f%%)\n", totalPartiallyWorking, 100.0*totalPartiallyWorking/(double)totalTested);
+    fprintf(stderr, "Not working at all :       %3u (%5.1f%%)\n", totalNotWorking, 100.0*totalNotWorking/(double)totalTested);
 }
