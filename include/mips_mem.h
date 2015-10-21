@@ -212,6 +212,7 @@ mips_mem_h mips_mem_create_ram(
     uint32_t blockSize	//!< Granularity of transactions supported by RAM
 );
 
+
 /*!
     @}
     @}

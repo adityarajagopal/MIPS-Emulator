@@ -16,7 +16,7 @@ extern "C"{
 */
 
 
-/*! Represents the state of a cpu.
+/*! Represents the state  a cpu.
 	
 	This another opaque data type, similar to \ref mips_mem_provider.
 	
@@ -213,6 +213,8 @@ mips_error mips_cpu_set_debug_level(mips_cpu_h state, unsigned level, FILE *dest
 		h=0;    // Does nothing here, might could stop other errors
 */
 void mips_cpu_free(mips_cpu_h state);
+
+uint8_t *to_big_endian(uint8_t fetchedAdress);
 
 /*!
 	@}
