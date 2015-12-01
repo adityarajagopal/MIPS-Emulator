@@ -2,27 +2,95 @@
 #define MIPS_CPU_DECDR_H
 
 #include "mips_cpu.h"
+#include "mips_cpu_modules.h"
 
-mips_error r_type(mips_cpu_h state, uint32_t instruction);
-mips_error r_mword_split(mips_cpu_h state, uint32_t instruction, uint32_t *valA, uint32_t *valB, unsigned *destReg);
+mips_error r_type(
+	mips_cpu_h state, 
+	uint32_t instruction, 
+	uint32_t *offset
+);
+void split_rtype_word(
+	uint32_t instruction, 
+	unsigned *machineWord
+);
+mips_error execute_r(
+	instr type, 
+	mips_cpu_h state, 
+	unsigned *machineWord
+);
+mips_error execute_r_branch(
+	instr type, 
+	mips_cpu_h state, 
+	unsigned *machineWord, 
+	uint32_t *offset
+);
+mips_error check_rword_validity(
+	instr command, 
+	unsigned* machineWord
+);
 
-mips_error ADDU(mips_cpu_h state, uint32_t instruction);
-mips_error ADD(mips_cpu_h state, uint32_t instruction);
-mips_error AND(mips_cpu_h state, uint32_t instruction);
-mips_error OR(mips_cpu_h state, uint32_t instruction);
-mips_error XOR(mips_cpu_h state, uint32_t instruction);
+mips_error i_type(
+	mips_cpu_h state, 
+	uint32_t instruction, 
+	uint32_t *offset
+);
+void split_itype_word(
+	uint32_t instruction,
+	unsigned *machineWord
+);
+mips_error execute_i(
+	instr type, 
+	mips_cpu_h state, 
+	unsigned *machineWord
+);
 
-mips_error i_type(mips_cpu_h state, uint32_t instruction);
+mips_error execute_i_branch(
+	instr type, 
+	mips_cpu_h state, 
+	unsigned *machineWord, 
+	uint32_t *offset, 
+	bool link = false
+);
+mips_error execute_i_load(
+	instr type, 
+	mips_cpu_h state,
+	unsigned *machineWord
+);
 
-mips_error j_type(mips_cpu_h state, uint32_t instruction);
+mips_error execute_i_loadword_lf(
+	instr type, 
+	mips_cpu_h state, 
+	unsigned *machineWord
+);
 
-enum instructions
-{
-	add = 0x20,
-	addu = 0x21,
-	bitwiseand = 0x24, 
-	bitwiseor = 0x25,
-	bitwisexor = 0x26
-};
+mips_error execute_i_store(
+	instr type, 
+	mips_cpu_h state, 
+	unsigned *machineWord
+);
+
+mips_error j_type(
+	mips_cpu_h state, 
+	uint32_t instruction, 
+	uint32_t *offset
+);
+void split_jtype_word(
+	uint32_t instruction, 
+	unsigned *machineWord
+);
+
+mips_error execute_j(
+	mips_cpu_h state, 
+	unsigned *machineWord, 
+	uint32_t *offset, 
+	bool link = false
+);
+
+mips_error get_source_registers(
+	mips_cpu_h state, 
+	uint32_t *valA, 
+	unsigned *machineWord, 
+	uint32_t *valB = NULL
+);
 
 #endif

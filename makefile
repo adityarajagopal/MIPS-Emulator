@@ -1,4 +1,4 @@
-# Your login. For example, mine is dt10. Yours
+ # Your login. For example, mine is dt10. Yours
 # won't be eie2ugs...
 LOGIN ?= ar4414
 

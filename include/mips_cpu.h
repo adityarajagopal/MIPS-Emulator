@@ -5,6 +5,7 @@
 #define mips_cpu_header
 
 #include "mips_mem.h"
+#include <string>
 
 #ifdef __cplusplus
 extern "C"{
@@ -213,8 +214,6 @@ mips_error mips_cpu_set_debug_level(mips_cpu_h state, unsigned level, FILE *dest
 		h=0;    // Does nothing here, might could stop other errors
 */
 void mips_cpu_free(mips_cpu_h state);
-
-uint8_t *to_big_endian(uint8_t fetchedAdress);
 
 /*!
 	@}
