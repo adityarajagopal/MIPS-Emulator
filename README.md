@@ -1,4 +1,4 @@
-This is a MIPS CPU emulator that takes as input machine code and outputs the results of running the code throuhg a MIPS CPU. The emulator executes the following instruction set. 
+This is a MIPS CPU emulator that takes as input machine code and outputs the results of running the code throuhg a MIPS CPU. The emulator executes the instruction set described below. As this project was done as a piece of coursework in second year, the makefile is not my own, but that provided to us. 
 
 Code  |   Meaning                                 
 ------|-------------------------------------------
